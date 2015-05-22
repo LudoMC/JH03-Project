@@ -45,8 +45,8 @@ Test <- cbind(Test, TestSet) # Measures from wearable gadget
 OneSet <- rbind(Train,Test)
 
 #Keeping only std() and mean() columns + Activity and Subject.Id (last two columns)
-colsToKeep <- as.vector(FeaturesLabels$Id[grepl("mean()",FeaturesLabels$Feature)])
-colsToKeep <- c(colsToKeep, as.vector(FeaturesLabels$Id[grepl("std()",FeaturesLabels$Feature)]))
+colsToKeep <- as.vector(FeaturesLabels$Id[grepl("mean\\(\\)",FeaturesLabels$Feature)])
+colsToKeep <- c(colsToKeep, as.vector(FeaturesLabels$Id[grepl("std\\(\\)",FeaturesLabels$Feature)]))
 colsToKeep <- colsToKeep + 2
 colsToKeep <- c(1, 2, colsToKeep)
 library(dplyr)
@@ -55,7 +55,7 @@ OneSubSet <- select(OneSet, colsToKeep)
 OneSubSet$Activity <- as.character(OneSubSet$Activity)
 
 #Construct the (wide) tidy data frame
-#One line per subject per activity and 89 columns of the mean of each measure
+#One line per subject per activity and 68 columns of the mean of each measure
 tidyDF <- subset(OneSubSet, 1==0)
 idx <- 0
 for(s in min(OneSubSet$Subject):max(OneSubSet$Subject)){ # For each subject
@@ -63,7 +63,7 @@ for(s in min(OneSubSet$Subject):max(OneSubSet$Subject)){ # For each subject
     for (a in 1:nrow(ActivityLabels)) { # For each activity for this subject
         tmp.act <- filter(tmp, Activity == ActivityLabels$Activity[[a]])
         idx <- idx + 1
-        tidyDF[idx,] <- c(tmp.act$Subject[1], tmp.act$Activity[1], colMeans(tmp.act[3:81]))
+        tidyDF[idx,] <- c(tmp.act$Subject[1], tmp.act$Activity[1], colMeans(tmp.act[3:68]))
     }
 }
 
