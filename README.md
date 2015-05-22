@@ -29,7 +29,7 @@ There will then be 180 observations (30 subjects x 6 activities)
     + Add all columns having std()
     + Shift them as they now start at index 3
     + Add first two columns (Subject and Activity)
-* Create a subset of OneSet cleverly names OneSubSet which contains all the data we need and not more
+* Create a subset of OneSet named OneSubSet which contains all the data we need and not more
 * The data frame which will be the final tidy one is creating empty, on the model of the OneSubSet
 * Two simple nested for loops will fill it
     + Loop on all subjects
