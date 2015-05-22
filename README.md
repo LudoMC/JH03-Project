@@ -1,10 +1,10 @@
 # Coursera - Getting and Cleaning Data - Course Project
 
 ### Prerequisites
-The script run_analysis.R expect to have the "UCI HAR DataSet" folder in ./
+The script `run_analysis.R` expects to have the `UCI HAR DataSet` folder in ./
 
 ###Output
-When run, the script will output, in ./ a TIDY.TXT file which was uploaded as the answer to the first question
+When run, the script will output, in ./ a `TIDY.TXT` file which was uploaded as the answer to the first question
 
 ###Explanations
 I decided to go for a wide tidy data frame.
@@ -24,7 +24,7 @@ There will then be 180 observations (30 subjects x 6 activities)
 * For the testing set
     + Same as for training set
 * Merge training and test sets into a OneSet
-* Build a vector which will contain all the columns to keep
+* Build a vector which will contain all the columns to keep (66 measures + 2 columns)
     + Put all columns having mean()
     + Add all columns having std()
     + Shift them as they now start at index 3
